@@ -1,0 +1,12 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class firefoxAutomation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.gecko.driver, "C:\\Users\\banda\\geckodriver-v0.21.0-win64.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://google.com");
+	}
+}

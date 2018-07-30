@@ -1,0 +1,18 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Newtest {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\banda\\OneDrive\\Desktop\\BharatSelenium\\selenium\\webdrivers\\chromedriver.exe");
+		ChromeDriver driver= new ChromeDriver();
+		driver.get("http:newtours.demoaut.com");
+		driver.findElement(By.linkText("REGISTER")).click();
+		
+
+	}
+
+}

@@ -1,0 +1,53 @@
+package intro;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class exceltest {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\banda\\OneDrive\\Desktop\\BharatSelenium\\selenium\\webdrivers\\geckodriver.exe");
+
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.get("http://newtours.demoaut.com");
+		
+		String linkTextURL=driver.findElement(By.linkText("REGISTER")).getAttribute("href");
+		System.out.println(linkTextURL);
+		
+		driver.findElement(By.linkText("REGISTER")).click();
+		
+		WebElement country=driver.findElement(By.name("country"));
+		
+		List<WebElement>countryNames=country.findElements(By.tagName("option"));
+		
+		for(int k=0;k<countryNames.size();k++)
+		{
+			String countryName=countryNames.get(k).getText();
+			System.out.println(countryName);
+		}
+		FileInputStream file = new FileInputStream("C:\\Users\\banda\\OneDrive\\Documents.xlsx");
+		XSSFWorkbook Book1 = new XSSFWorkbook(file);
+		XSSFSheet sheet = Book1.getSheet("Sheet1");
+		
+		Row r=sheet.createRow(0);
+		Cell c=r.createCell(0);
+		
+		for(int i=0;i<countryNames.size();i++)
+		{
+			c.setCellValue(linkTextURL);
+		}
+		
+	}
+
+}
